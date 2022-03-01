@@ -156,10 +156,7 @@ class MostrarGraficos : AppCompatActivity() {
             textoParcialGrafica.add(elementoParcial2.get(x))
             cantidadParcialGrafica.add(elementoParcial.get(y))
         }
-        for (i in 0 until 2){
-            System.out.println(textoParcialGrafica.get(i))
-            System.out.println(cantidadParcialGrafica.get(i))
-        }
+
         if((g and h)>0){
         if(tipoDeGraficaParcial=="Pie"){
             for (i in (DatosGrafica.datosGrafica.extraPie.size-1 downTo 0 )) {
