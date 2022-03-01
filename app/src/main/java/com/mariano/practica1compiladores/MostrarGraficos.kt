@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.anychart.AnyChartView
 import lector.DatosGrafica
@@ -81,9 +79,6 @@ class MostrarGraficos : AppCompatActivity() {
                 llenarTitulos()
                 if((c and d and e)>0){
 
-                        //Toast.makeText(this,"No coincide ejecutar con alguna grafica creada",Toast.LENGTH_SHORT).show()
-
-
                         llenarDatos()
                         if(tipoDeGraficaParcial=="Pie"){
                             var graficoCircular= Grafico()
@@ -113,17 +108,15 @@ class MostrarGraficos : AppCompatActivity() {
             }
         }
     }
-    fun llenarDatos() {
+    fun llenarDatos(){
         var verificador: String
         var verificador2: String
         DatosGrafica.datosGrafica.ejecutar
 
-        for (i in 0 until tituloComparacion.size) {
-            if (DatosGrafica.datosGrafica.ejecutar.get(DatosGrafica.datosGrafica.contador)
-                    .equals(tituloComparacion.get(i))
-            ) {
-                titulo = tituloComparacion.get(i);
-                tipoDeGraficaParcial = tipoDeGrafica.get(i)
+        for (i in 0 until tituloComparacion.size){
+            if(DatosGrafica.datosGrafica.ejecutar.get(DatosGrafica.datosGrafica.contador).equals(tituloComparacion.get(i))){
+                titulo=tituloComparacion.get(i);
+                tipoDeGraficaParcial=tipoDeGrafica.get(i)
             }
         }
 
