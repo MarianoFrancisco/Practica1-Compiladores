@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:background="#8D03A9F4"
         tools:context=".MostrarGraficos"
         android:orientation="vertical">
         <Button
@@ -19,7 +20,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/graficaAdelante"
                 tools:ignore="MissingConstraints"/>
-
+        <Button
+                android:text="Ver anterior grafica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/graficaAtras"
+                tools:ignore="MissingConstraints"/>
         <com.anychart.AnyChartView
                 android:id="@+id/grafico"
                 android:layout_marginVertical="15sp"

@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="400dp"
         android:layout_height="700dp"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:background="#8D03A9F4">
 
     <TextView
             android:layout_width="wrap_content"
@@ -24,11 +25,11 @@
             android:layout_centerHorizontal="true"/>
     <Button
             android:text="Realizar Grafica"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/realizarGrafica"
-            android:gravity="bottom|center" android:layout_alignParentStart="true" android:layout_marginStart="120dp"
-            android:layout_alignParentTop="true" android:layout_marginTop="429dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_width="205dp"
+            android:layout_height="81dp" android:id="@+id/realizarGrafica"
+            android:gravity="center" android:layout_alignParentStart="true" android:layout_marginStart="96dp"
+            android:layout_alignParentTop="true" android:layout_marginTop="424dp"
+            android:layout_centerHorizontal="true" android:textSize="20sp"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="217dp" app:srcCompat="@drawable/graficaestadistica"

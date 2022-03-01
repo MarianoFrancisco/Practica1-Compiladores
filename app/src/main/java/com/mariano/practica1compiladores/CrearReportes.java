@@ -85,7 +85,6 @@ public class CrearReportes extends AppCompatActivity {
         for (int i=0;i<DatosReportes.datosReportes.getObtenerOcurrencias().size();i++){
             filasOperadores.add(DatosReportes.datosReportes.getObtenerOcurrencias().get(i));
         }
-        //filasOperadores.add(new String[]{"Resta","12","3","12-2"});
         return filasOperadores;
     }
     private ArrayList<String[]>conseguirReporteErrores(){
@@ -95,7 +94,6 @@ public class CrearReportes extends AppCompatActivity {
         for (int i=0;i<DatosReportes.datosReportes.getErrorSintactico().size();i++){
             filasErrores.add(DatosReportes.datosReportes.getErrorSintactico().get(i));
         }
-        //filasErrores.add(new String[]{"*","2","3","sintactico","esperaba titulo"});
         return filasErrores;
     }
 }

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.anychart.AnyChartView
 import lector.DatosGrafica
@@ -41,6 +43,7 @@ class MostrarGraficos : AppCompatActivity() {
         setContentView(R.layout.activity_mostrar_graficos)
         var reportes = findViewById<Button>(R.id.reportes)
         var siguienteGrafica = findViewById<Button>(R.id.graficaAdelante)
+        var anteriorGrafica = findViewById<Button>(R.id.graficaAtras)
         if(DatosGrafica.datosGrafica.contador<a-1){
             siguienteGrafica.setOnClickListener(){
                 val intent: Intent = Intent(this,MostrarGraficos::class.java)
@@ -48,6 +51,7 @@ class MostrarGraficos : AppCompatActivity() {
                 DatosGrafica.datosGrafica.setContador(DatosGrafica.datosGrafica.contador+1)
                 finish()
             }
+
         }else{siguienteGrafica.setOnClickListener(){
             val intent: Intent = Intent(this,MostrarGraficos::class.java)
             startActivity(intent)
@@ -55,21 +59,42 @@ class MostrarGraficos : AppCompatActivity() {
             }
 
         }
+        if(DatosGrafica.datosGrafica.contador==0){
+            anteriorGrafica.setOnClickListener(){
+                val intent: Intent = Intent(this,MostrarGraficos::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+        }else{
+            anteriorGrafica.setOnClickListener(){
+                val intent: Intent = Intent(this,MostrarGraficos::class.java)
+                startActivity(intent)
+                DatosGrafica.datosGrafica.setContador(DatosGrafica.datosGrafica.contador-1)
+                finish()
+            }
+        }
         val objetoIntent: Intent =intent
         grafico=findViewById<AnyChartView>(R.id.grafico)
         if(DatosReportes.datosReportes.getErrorEntrada()==0){
             if((a and b)>0){
                 llenarTitulos()
                 if((c and d and e)>0){
-                    llenarDatos()
-                    if(tipoDeGraficaParcial=="Pie"){
-                        var graficoCircular= Grafico()
-                        graficoCircular.configurarGraficoCircular(grafico, textoParcialGrafica ,cantidadParcialGrafica,titulo)
 
-                    }else{
-                        var graficoBarra= Grafico()
-                        graficoBarra.configurarGraficoBarra(grafico, textoParcialGrafica,cantidadParcialGrafica,titulo)
-                    }}
+                        //Toast.makeText(this,"No coincide ejecutar con alguna grafica creada",Toast.LENGTH_SHORT).show()
+
+
+                        llenarDatos()
+                        if(tipoDeGraficaParcial=="Pie"){
+                            var graficoCircular= Grafico()
+                            graficoCircular.configurarGraficoCircular(grafico, textoParcialGrafica ,cantidadParcialGrafica,titulo)
+
+                        }else{
+                            var graficoBarra= Grafico()
+                            graficoBarra.configurarGraficoBarra(grafico, textoParcialGrafica,cantidadParcialGrafica,titulo)
+                        }}
+
+
             }
         }
         reportes.setOnClickListener{
@@ -88,15 +113,17 @@ class MostrarGraficos : AppCompatActivity() {
             }
         }
     }
-    fun llenarDatos(){
+    fun llenarDatos() {
         var verificador: String
         var verificador2: String
         DatosGrafica.datosGrafica.ejecutar
 
-        for (i in 0 until tituloComparacion.size){
-            if(DatosGrafica.datosGrafica.ejecutar.get(DatosGrafica.datosGrafica.contador).equals(tituloComparacion.get(i))){
-                titulo=tituloComparacion.get(i);
-                tipoDeGraficaParcial=tipoDeGrafica.get(i)
+        for (i in 0 until tituloComparacion.size) {
+            if (DatosGrafica.datosGrafica.ejecutar.get(DatosGrafica.datosGrafica.contador)
+                    .equals(tituloComparacion.get(i))
+            ) {
+                titulo = tituloComparacion.get(i);
+                tipoDeGraficaParcial = tipoDeGrafica.get(i)
             }
         }
 
